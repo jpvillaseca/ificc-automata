@@ -4,6 +4,9 @@ extends Node2D
 @export var simulation: Simulation
 @export var sleepTimer: float = 0.5
 
+@export var preset_type: SimulationPresets.PresetType = SimulationPresets.PresetType.BALANCED
+@export var use_preset: bool = true
+
 var cell_width: int = 15
 var label_height: int = 240
 var _is_waiting = false
@@ -19,6 +22,9 @@ var plot_leecher
 
 func _ready():
 	rng.randomize()
+
+	if use_preset:
+		simulation = SimulationPresets.create_preset(preset_type)
 
 	$Graph2D.x_max = simulation.iterations
 	$Graph2D.x_min = 0

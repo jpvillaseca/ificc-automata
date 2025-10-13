@@ -26,6 +26,7 @@ script = ExtResource("1_cdjdq")
 cell_scene = ExtResource("2_fogbu")
 simulation = SubResource("Resource_hk55p")
 sleepTimer = 0.0
+preset_type = 1
 
 [node name="InfoLabel" type="RichTextLabel" parent="."]
 anchors_preset = 10
