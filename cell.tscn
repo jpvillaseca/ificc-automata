@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://cell.gd" id="2_63ct1"]
 
 [node name="Cell" type="Sprite2D"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_s0a5w")
 script = ExtResource("2_63ct1")
 CellType = 2

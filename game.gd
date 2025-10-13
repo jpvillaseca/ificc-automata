@@ -2,8 +2,9 @@ extends Node2D
 
 @export var cell_scene: PackedScene
 @export var simulation: Simulation
+@export var sleepTimer: float = 0.5
 
-var cell_width: int = 30
+var cell_width: int = 15
 var label_height: int = 50
 var _is_waiting = false
 
@@ -37,21 +38,24 @@ func _process(delta):
 
 func simulation_iteration():
 	_is_waiting = true
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(sleepTimer).timeout
 	
-	var is_finished = simulation.current_iteration > simulation.iterations
+	if simulation.current_iteration >= simulation.iterations + 1:
+		_is_waiting = false
+		return
+
+	var is_finished = simulation.current_iteration == simulation.iterations + 1
 
 	var label_text = ""
 	if is_finished:
 		label_text = "[shake][b]Simulation finished[/b][/shake] after [b]%d[/b] iterations" % simulation.iterations
 	else:
+		simulation.simulation_iteration()
 		label_text = "[shake][b]Simulation running[/b][/shake] [b]%d/%d[/b] iterations" % [simulation.current_iteration, simulation.iterations]
-
-	simulation.simulation_iteration()
-	simulation.refresh_stats()
+		simulation.refresh_stats()
 
 
-	label_text += "\n[color=aqua]Normal: %d[/color] [color=green]GreenBeard: %d[/color] [color=greenyellow]Fakers: %d[/color] [color=orange]Leecher: %d[/color] [color=gray]Dead: %d[/color]" % [
-		simulation.amount_normal, simulation.amount_green_beard, simulation.amount_fake_green_beard, simulation.amount_leecher, simulation.amount_dead]
+	label_text += "\n[color=dodgerblue]Normal: %d[/color] [color=lawngreen]GreenBeard: %d[/color] [color=orange]Fakers: %d[/color] [color=ORCHID]Pure altruist: %d[/color] [color=gold]Leecher: %d[/color] [color=gray]Dead: %d[/color]" % [
+		simulation.amount_normal, simulation.amount_green_beard, simulation.amount_fake_green_beard, simulation.amount_pure_altruist, simulation.amount_leecher, simulation.amount_dead]
 	$InfoLabel.text = label_text
 	_is_waiting = false
