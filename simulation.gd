@@ -73,7 +73,7 @@ func simulation_iteration():
 					cell.generations_dead = 0
 				continue
 		
-			# is an altruist nearby
+			# theres an altruist nearby
 			var altruist_nearby = false
 			var altruist_cell
 			for x in range(-1, 2):
@@ -83,7 +83,7 @@ func simulation_iteration():
 						# neighbor will help if:
 						# - is pure altruist
 						# - is green beard and current is green beard or fake green beard
-						if neighbour_type == Cell.AltruistType.PureAltruist || Cell.AltruistType.GreenBeard && (current == Cell.AltruistType.FakeGreenBeard || current == Cell.AltruistType.GreenBeard):
+						if neighbour_type == Cell.AltruistType.PureAltruist || neighbour_type == Cell.AltruistType.GreenBeard && (current == Cell.AltruistType.FakeGreenBeard || current == Cell.AltruistType.GreenBeard):
 							altruist_nearby = true
 							altruist_cell = cell_matrix[column + x][row + y]
 							break

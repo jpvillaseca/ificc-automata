@@ -24,7 +24,7 @@ func _update_color():
 	modulate = cell_type_to_color(CellType)
 		
 
-func cell_type_to_color(cell_type: AltruistType) -> Color:
+static func cell_type_to_color(cell_type: AltruistType) -> Color:
 	match cell_type:
 		AltruistType.Normal:
 			return Color.DODGER_BLUE

@@ -23,3 +23,7 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="evolution"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/graph_2d/plugin.cfg")
