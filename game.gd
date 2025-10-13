@@ -17,7 +17,6 @@ var plot_normal
 var plot_green_beard
 var plot_fake_green_beard
 var plot_pure_altruist
-var plot_leecher
 
 
 func _ready():
@@ -34,7 +33,6 @@ func _ready():
 	plot_green_beard = $Graph2D.add_plot_item("", Cell.cell_type_to_color(Cell.AltruistType.GreenBeard), 1.0)
 	plot_fake_green_beard = $Graph2D.add_plot_item("", Cell.cell_type_to_color(Cell.AltruistType.FakeGreenBeard), 1.0)
 	plot_pure_altruist = $Graph2D.add_plot_item("", Cell.cell_type_to_color(Cell.AltruistType.PureAltruist), 1.0)
-	plot_leecher = $Graph2D.add_plot_item("", Cell.cell_type_to_color(Cell.AltruistType.Leecher), 1.0)
 
 	for column in range(simulation.column_count):
 		simulation.cell_matrix.push_back([])
@@ -79,11 +77,10 @@ func simulation_iteration():
 		plot_green_beard.add_point(Vector2(simulation.current_iteration, simulation.amount_green_beard))
 		plot_fake_green_beard.add_point(Vector2(simulation.current_iteration, simulation.amount_fake_green_beard))
 		plot_pure_altruist.add_point(Vector2(simulation.current_iteration, simulation.amount_pure_altruist))
-		plot_leecher.add_point(Vector2(simulation.current_iteration, simulation.amount_leecher))
 
 
-	label_text += "\n[color=dodgerblue]Normal: %d[/color]\n[color=lawngreen]GreenBeard: %d[/color]\n[color=orange]Fakers: %d[/color]\n[color=ORCHID]Pure altruist: %d[/color]\n[color=gold]Leecher: %d[/color]\n[color=gray]Dead: %d[/color]" % [
-		simulation.amount_normal, simulation.amount_green_beard, simulation.amount_fake_green_beard, simulation.amount_pure_altruist, simulation.amount_leecher, simulation.amount_dead]
+	label_text += "\n[color=dodgerblue]Normal: %d[/color]\n[color=lawngreen]GreenBeard: %d[/color]\n[color=orange]Fakers: %d[/color]\n[color=ORCHID]Pure altruist: %d[/color]\n[color=gray]Dead: %d[/color]" % [
+		simulation.amount_normal, simulation.amount_green_beard, simulation.amount_fake_green_beard, simulation.amount_pure_altruist, simulation.amount_dead]
 	$InfoLabel.text = label_text
 
 	_is_waiting = false

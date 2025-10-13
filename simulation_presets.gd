@@ -20,7 +20,6 @@ static func create_preset(preset_type: PresetType) -> Simulation:
 			sim.chance_normal = 0.3
 			sim.chance_green_beard = 0.4
 			sim.chance_fake_green_beard = 0.05
-			sim.chance_leecher = 0.0
 			sim.chance_pure_altruist = 0.3
 			sim.chance_predator_eats = 0.1
 			sim.chance_altruistic_gets_eaten = 0.15
@@ -35,7 +34,6 @@ static func create_preset(preset_type: PresetType) -> Simulation:
 			sim.chance_normal = 0.1
 			sim.chance_green_beard = 0.7
 			sim.chance_fake_green_beard = 0.1
-			sim.chance_leecher = 0.05
 			sim.chance_pure_altruist = 0.05
 			sim.chance_predator_eats = 0.15
 			sim.chance_altruistic_gets_eaten = 0.1
@@ -50,7 +48,6 @@ static func create_preset(preset_type: PresetType) -> Simulation:
 			sim.chance_normal = 0.5
 			sim.chance_green_beard = 0.0
 			sim.chance_fake_green_beard = 0.0
-			sim.chance_leecher = 0.0
 			sim.chance_pure_altruist = 0.5
 			sim.chance_predator_eats = 0.2
 			sim.chance_altruistic_gets_eaten = 0.2
@@ -65,7 +62,6 @@ static func create_preset(preset_type: PresetType) -> Simulation:
 			sim.chance_normal = 0.3
 			sim.chance_green_beard = 0.3
 			sim.chance_fake_green_beard = 0.1
-			sim.chance_leecher = 0.1
 			sim.chance_pure_altruist = 0.2
 			sim.chance_predator_eats = 0.3
 			sim.chance_altruistic_gets_eaten = 0.3
@@ -80,7 +76,6 @@ static func create_preset(preset_type: PresetType) -> Simulation:
 			sim.chance_normal = 0.25
 			sim.chance_green_beard = 0.25
 			sim.chance_fake_green_beard = 0.15
-			sim.chance_leecher = 0.1
 			sim.chance_pure_altruist = 0.25
 			sim.chance_predator_eats = 0.25
 			sim.chance_altruistic_gets_eaten = 0.2

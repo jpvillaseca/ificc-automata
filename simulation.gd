@@ -7,7 +7,6 @@ class_name Simulation
 @export var chance_normal: float = 0.5 # chance a cell is a normal cell
 @export var chance_green_beard: float = 0.5 # chance a cell is a green beard
 @export var chance_fake_green_beard: float = 0.0 # chance a cell is a fake green beard
-@export var chance_leecher: float = 0.0 # chance a cell is a leecher
 @export var chance_pure_altruist: float = 0.5 # chance a cell is a pure altruist
 @export var chance_predator_eats: float = 0.1 # chance that a cell is eaten by a predator
 @export var chance_altruistic_gets_eaten: float = 0.3 # chance that an altruistic cell gets eaten when saving another
@@ -34,22 +33,20 @@ func is_edge(column, row):
 func get_cell_type_by_chance() -> int:
 	var roll = rng.randf()
 	# normalize chances since they might not add up to 1
-	var total = chance_normal + chance_green_beard + chance_fake_green_beard + chance_leecher + chance_pure_altruist
+	var total = chance_normal + chance_green_beard + chance_fake_green_beard + chance_pure_altruist
 	var normalized_normal = chance_normal / total
 	var normalized_green_beard = chance_green_beard / total
 	var normalized_fake_green_beard = chance_fake_green_beard / total
-	var normalized_leecher = chance_leecher / total
 	var normalized_pure_altruist = chance_pure_altruist / total
 	if roll < normalized_normal:
 		return Cell.AltruistType.Normal
 	elif roll < normalized_normal + normalized_green_beard:
 		return Cell.AltruistType.GreenBeard
-	elif roll < normalized_normal + normalized_green_beard + normalized_leecher:
-		return Cell.AltruistType.Leecher
-	elif roll < normalized_normal + normalized_green_beard + normalized_leecher + normalized_pure_altruist:
-		return Cell.AltruistType.PureAltruist
-	else:
+	elif roll < normalized_normal + normalized_green_beard + normalized_fake_green_beard:
 		return Cell.AltruistType.FakeGreenBeard
+	elif roll < normalized_normal + normalized_green_beard + normalized_fake_green_beard + normalized_pure_altruist:
+		return Cell.AltruistType.PureAltruist
+	return Cell.AltruistType.Normal
 
 func simulation_iteration():
 	previous_cell_states = []
@@ -105,7 +102,6 @@ func simulation_iteration():
 
 var amount_normal: int = 0
 var amount_green_beard: int = 0
-var amount_leecher: int = 0
 var amount_fake_green_beard: int = 0
 var amount_pure_altruist: int = 0
 var amount_dead: int = 0
@@ -115,7 +111,6 @@ func refresh_stats():
 	current_iteration += 1
 	amount_normal = 0
 	amount_green_beard = 0
-	amount_leecher = 0
 	amount_fake_green_beard = 0
 	amount_pure_altruist = 0
 	amount_dead = 0
@@ -127,8 +122,6 @@ func refresh_stats():
 					amount_normal += 1
 				Cell.AltruistType.GreenBeard:
 					amount_green_beard += 1
-				Cell.AltruistType.Leecher:
-					amount_leecher += 1
 				Cell.AltruistType.FakeGreenBeard:
 					amount_fake_green_beard += 1
 				Cell.AltruistType.PureAltruist:
@@ -137,16 +130,14 @@ func refresh_stats():
 					amount_dead += 1
 
 	# update chances based on current stats
-	var total_alive = amount_normal + amount_green_beard + amount_leecher + amount_fake_green_beard + amount_pure_altruist
+	var total_alive = amount_normal + amount_green_beard + amount_fake_green_beard + amount_pure_altruist
 	if total_alive == 0:
 		chance_normal = 0.0
 		chance_green_beard = 0.0
-		chance_leecher = 0.0
 		chance_fake_green_beard = 0.0
 		chance_pure_altruist = 0.0
 	else:
 		chance_normal = float(amount_normal) / total_alive
 		chance_green_beard = float(amount_green_beard) / total_alive
-		chance_leecher = float(amount_leecher) / total_alive
 		chance_fake_green_beard = float(amount_fake_green_beard) / total_alive
 		chance_pure_altruist = float(amount_pure_altruist) / total_alive

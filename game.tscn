@@ -12,7 +12,6 @@ column_count = 80
 chance_normal = 0.3
 chance_green_beard = 0.4
 chance_fake_green_beard = 0.05
-chance_leecher = 0.0
 chance_pure_altruist = 0.3
 chance_predator_eats = 0.1
 chance_altruistic_gets_eaten = 0.15

@@ -4,7 +4,6 @@ class_name Cell
 enum AltruistType {
 	Normal,
 	GreenBeard,
-	Leecher,
 	FakeGreenBeard,
 	PureAltruist,
 	Dead
@@ -30,8 +29,6 @@ static func cell_type_to_color(cell_type: AltruistType) -> Color:
 			return Color.DODGER_BLUE
 		AltruistType.GreenBeard:
 			return Color.LAWN_GREEN
-		AltruistType.Leecher:
-			return Color.GOLD
 		AltruistType.FakeGreenBeard:
 			return Color.ORANGE
 		AltruistType.PureAltruist:
