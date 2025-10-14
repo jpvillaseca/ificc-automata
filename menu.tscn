@@ -1,0 +1,262 @@
+[gd_scene load_steps=2 format=3 uid="uid://86o2wim461or"]
+
+[ext_resource type="Script" uid="uid://btl0nqrrc5gia" path="res://menu.gd" id="1_menu"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Evolution Simulation Parameters"
+horizontal_alignment = 1
+
+[node name="GridParameters" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Grid Size"
+
+[node name="RowCount" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/RowCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Row Count:"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/RowCount"]
+layout_mode = 2
+min_value = 10.0
+max_value = 200.0
+max_value = 1000.0
+step = 1
+value = 80.0
+
+[node name="ColumnCount" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ColumnCount"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Column Count:"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/ColumnCount"]
+layout_mode = 2
+min_value = 10.0
+max_value = 1000.0
+step = 1
+value = 80.0
+
+[node name="PopulationLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Initial Population Chances"
+
+[node name="ChanceNormal" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ChanceNormal"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Normal Cells:"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/ChanceNormal"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.4
+
+[node name="ChanceGreenBeard" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ChanceGreenBeard"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Green Beard Cells:"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/ChanceGreenBeard"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.4
+
+[node name="ChanceFakeGreenBeard" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ChanceFakeGreenBeard"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fake Green Beard Cells:"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/ChanceFakeGreenBeard"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.01
+
+[node name="ChancePureAltruist" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ChancePureAltruist"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pure Altruist Cells:"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/ChancePureAltruist"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.3
+
+[node name="SimulationLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Simulation Parameters"
+
+[node name="ChancePredatorEats" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ChancePredatorEats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Chance Predator Eats:"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/ChancePredatorEats"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.1
+
+[node name="ChanceAltruisticGetsEaten" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ChanceAltruisticGetsEaten"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Chance Altruist Gets Eaten:"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/ChanceAltruisticGetsEaten"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.2
+
+[node name="ChanceSavedGetsSaved" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ChanceSavedGetsSaved"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Chance Cell Gets Saved:"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/ChanceSavedGetsSaved"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.8
+
+[node name="ChanceCellIsBorn" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ChanceCellIsBorn"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Chance Dead Cell Is Born:"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/ChanceCellIsBorn"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.2
+
+[node name="GenerationsBeforeBirth" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/GenerationsBeforeBirth"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Generations Before Birth:"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/GenerationsBeforeBirth"]
+layout_mode = 2
+step = 1
+value = 2.0
+min_value = 0
+
+[node name="Iterations" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Iterations"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Number of Iterations:"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/Iterations"]
+layout_mode = 2
+min_value = 10.0
+max_value = 5000.0
+value = 300.0
+
+[node name="GameLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Game Parameters"
+
+[node name="SleepTimer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/SleepTimer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sleep Timer (seconds):"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/SleepTimer"]
+layout_mode = 2
+max_value = 5.0
+step = 0.01
+
+[node name="EnableRendering" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/EnableRendering"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Enable Cell Rendering:"
+
+[node name="CheckBox" type="CheckBox" parent="ScrollContainer/VBoxContainer/EnableRendering"]
+layout_mode = 2
+button_pressed = true
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Start Simulation"
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

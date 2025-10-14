@@ -23,23 +23,28 @@ iterations = 2000
 script = ExtResource("1_cdjdq")
 cell_scene = ExtResource("2_fogbu")
 simulation = SubResource("Resource_hk55p")
-sleepTimer = 0.0
-preset_type = 1
-use_preset = false
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 120.0
+offset_bottom = 36.0
+text = "Back to Menu"
 
 [node name="InfoLabel" type="RichTextLabel" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 5.0
-offset_top = 7.0
+offset_top = 45.0
 offset_right = 1145.0
-offset_bottom = 53.0
+offset_bottom = 200.0
 grow_horizontal = 2
 bbcode_enabled = true
 text = "[shake rate=10]bold[/shake]
 "
 fit_content = true
 autowrap_mode = 0
+
 
 [node name="Graph2D" type="Control" parent="."]
 layout_mode = 3
@@ -52,3 +57,5 @@ script = ExtResource("4_ckyh4")
 x_label = "Iterations"
 y_label = "Individuals"
 background_color = Color(0, 0, 0, 0)
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
