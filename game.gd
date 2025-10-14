@@ -3,6 +3,7 @@ extends Node2D
 @export var cell_scene: PackedScene
 @export var simulation: Simulation
 @export var sleepTimer: float = 0.5
+@export var enable_rendering: bool = true
 
 @export var preset_type: SimulationPresets.PresetType = SimulationPresets.PresetType.BALANCED
 @export var use_preset: bool = true
@@ -34,21 +35,20 @@ func _ready():
 	plot_fake_green_beard = $Graph2D.add_plot_item("", Cell.cell_type_to_color(Cell.AltruistType.FakeGreenBeard), 1.0)
 	plot_pure_altruist = $Graph2D.add_plot_item("", Cell.cell_type_to_color(Cell.AltruistType.PureAltruist), 1.0)
 
+
 	for column in range(simulation.column_count):
-		simulation.cell_matrix.push_back([])
 		for row in range(simulation.row_count):
 			var cell = cell_scene.instantiate()
-			if is_edge(column, row):
-				cell.visible = false
-				cell.CellType = cell.AltruistType.Dead
-			else:
-				cell.CellType = simulation.get_cell_type_by_chance()
-			self.add_child(cell)
+			cell.visible = enable_rendering
+			simulation.cell_matrix.push_back([])
 			cell.position = Vector2(column * cell_width, label_height + row * cell_width)
-			
+			cell.column = column
+			cell.row = row
+			self.add_child(cell)
 			simulation.cell_matrix[column].push_back(cell)
-			
+	simulation.restart()
 
+			
 func is_edge(column, row):
 	return row == 0 or column == 0 or row == simulation.row_count - 1 or column == simulation.column_count - 1
 

@@ -15,6 +15,9 @@ enum AltruistType {
 		_update_color()
 		
 var generations_dead: int = 0
+var row: int = -1
+var column: int = -1
+var iteration_used_as_altruist: int = -1
 
 func _ready() -> void:
 	_update_color()
