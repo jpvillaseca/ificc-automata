@@ -2,7 +2,6 @@
 .godot/
 /android/
 *.tmp
-release/
 .nomedia
 
 # Godot-specific ignores
