@@ -33,13 +33,14 @@ theme_override_constants/separation = 10
 layout_mode = 2
 bbcode_enabled = true
 text = "[center][font_size=28][wave amp=50 freq=2][rainbow freq=0.5 sat=0.1 val=1.0]Juan Pablo Villaseca[/rainbow][/wave][/font_size]
-[pulse color=#00ff00 freq=2.0 ease=-2.0][color=#ffff00]IFICC 2025(c)[/color][/pulse][/center]"
+[pulse color=#00ff00 freq=2.0 ease=-2.0][color=#ffff00]Instituto de Filosofía y Ciencias de la complejidad
+ Complex systems philosophy / 2025(c)[/color][/pulse][/center]"
 fit_content = true
 
 [node name="Title" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Evolution Simulation Parameters"
+text = "Evolutionary strategies with stochastic cellular automata"
 horizontal_alignment = 1
 
 [node name="GridParameters" type="Label" parent="ScrollContainer/VBoxContainer"]
